@@ -7,11 +7,11 @@
 
 :root {
     /* White and Yellow color palette */
-    --primary-yellow: #ffd700;
-    --secondary-yellow: #ffed4e;
-    --accent-yellow: #fff200;
+    --primary-yellow: #FFB700;
+    --secondary-yellow: #FFB700;
+    --accent-yellow: #FFB700;
     --light-yellow: #fffef0;
-    --dark-yellow: #b8860b;
+    --dark-yellow: #FFB700;
     --success-green: #28a745;
     --warning-orange: #ffc107;
     --danger-red: #dc3545;
@@ -156,6 +156,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-lg);
 }
 
 .nav-logo {
@@ -168,7 +169,7 @@ p {
 }
 
 .nav-logo-img {
-    height: 2rem;
+    height: 4rem;
     width: auto;
 }
 
@@ -187,6 +188,16 @@ p {
 
 .nav-menu a:hover {
     color: var(--primary-yellow);
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+}
+
+.nav-cta .btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.9rem;
 }
 
 .hamburger {
@@ -696,8 +707,14 @@ p {
 }
 
 .footer-logo-img {
-    height: 2rem;
-    width: auto;
+    height: 8rem;
+    width: 100%;
+    max-width: 400px;
+    background: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    object-fit: contain;
 }
 
 .footer-section p {
@@ -766,6 +783,10 @@ p {
     }
     
     .nav-menu {
+        display: none;
+    }
+    
+    .nav-cta {
         display: none;
     }
     
