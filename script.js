@@ -3,6 +3,8 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeWebsite();
+    drawWorkflowArrows();
+    window.addEventListener('resize', drawWorkflowArrows);
 });
 
 // Initialize all website functionality
@@ -13,6 +15,8 @@ function initializeWebsite() {
     setupScrollAnimations();
     setupFormHandlers();
     setupLoadingAnimations();
+    setupDemoWindowMouseTracking();
+    setupHeroDemoAnimation();
 }
 
 // Mobile Navigation
@@ -145,7 +149,7 @@ function setupSingleVideoUpload(videoUpload, videoPlayer, uploadBtn, videoInfo) 
     
     videoContainer.addEventListener('dragover', function(e) {
         e.preventDefault();
-        this.style.border = '2px dashed #ffd700';
+        this.style.border = '2px dashed #FBC601';
         this.style.background = '#fffef0';
     });
     
@@ -304,17 +308,39 @@ function setupLoadingAnimations() {
     }, 100);
 }
 
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-});
+// Demo Window Mouse Tracking
+function setupDemoWindowMouseTracking() {
+    const demoWindow = document.querySelector('.demo-window');
+    const heroSection = document.querySelector('.hero');
+    
+    if (!demoWindow || !heroSection) return;
+    
+    heroSection.addEventListener('mousemove', function(e) {
+        const rect = demoWindow.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Calculate the distance from center
+        const deltaX = (mouseX - centerX) / rect.width;
+        const deltaY = (mouseY - centerY) / rect.height;
+        
+        // Limit the tilt amount (max 10 degrees)
+        const maxTilt = 10;
+        const tiltX = -deltaY * maxTilt;
+        const tiltY = deltaX * maxTilt;
+        
+        // Apply the transform
+        demoWindow.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    });
+    
+    // Reset tilt when mouse leaves the hero section
+    heroSection.addEventListener('mouseleave', function() {
+        demoWindow.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+}
 
 // Add CSS for modals and notifications
 const additionalStyles = `
@@ -384,7 +410,7 @@ const additionalStyles = `
     .form-group input:focus,
     .form-group textarea:focus {
         outline: none;
-        border-color: #ffd700;
+                        border-color: #FBC601;
     }
     
 
@@ -473,23 +499,125 @@ window.addEventListener('scroll', debounce(function() {
 
 // Download extension function
 function downloadExtension() {
-    // Prevent any popup behavior
-    event.preventDefault();
-    
-    // Create a direct download link with specific attributes to bypass popups
-    const link = document.createElement('a');
-    link.href = 'Synchrony-PII-Filter.zip';
-    link.download = 'Synchrony-PII-Filter.zip';
-    link.type = 'application/octet-stream';
-    link.style.display = 'none';
-    
-    // Add to DOM, click, and remove immediately
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    alert("Thank you for your interest! The Synchrony Shield extension is coming soon.");
 }
 
 // Export functions for global access
 window.scrollToDemo = scrollToDemo;
 window.showContactModal = showContactModal;
 window.downloadExtension = downloadExtension; 
+
+function drawWorkflowArrows() {
+    const svg = document.querySelector('.workflow-diagram .arrow-svg');
+    const diagram = document.querySelector('.workflow-diagram');
+    if (!svg || !diagram) return;
+
+    // Clear existing arrows
+    svg.innerHTML = '';
+
+    const diagramRect = diagram.getBoundingClientRect();
+
+    function getEdgePoint(element, side) {
+        if (!element) return null;
+        const rect = element.getBoundingClientRect();
+        const x = rect.left - diagramRect.left;
+        const y = rect.top - diagramRect.top;
+
+        switch (side) {
+            case 'left':
+                return { x: x, y: y + rect.height / 2 };
+            case 'right':
+                return { x: x + rect.width, y: y + rect.height / 2 };
+            case 'top':
+                return { x: x + rect.width / 2, y: y };
+            case 'bottom':
+                return { x: x + rect.width / 2, y: y + rect.height };
+            default:
+                return null;
+        }
+    }
+
+    function drawArrow(p1, p2) {
+        if (!p1 || !p2) return;
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', p1.x);
+        line.setAttribute('y1', p1.y);
+        line.setAttribute('x2', p2.x);
+        line.setAttribute('y2', p2.y);
+        line.setAttribute('stroke', '#F5D78A');
+        line.setAttribute('stroke-width', '3');
+        line.setAttribute('marker-end', 'url(#arrowhead)');
+        svg.appendChild(line);
+    }
+
+    // Define arrowhead marker
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+    marker.setAttribute('id', 'arrowhead');
+    marker.setAttribute('markerWidth', '10');
+    marker.setAttribute('markerHeight', '7');
+    marker.setAttribute('refX', '8');
+    marker.setAttribute('refY', '3.5');
+    marker.setAttribute('orient', 'auto');
+    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    polygon.setAttribute('points', '0 0, 10 3.5, 0 7');
+    polygon.setAttribute('fill', '#F5D78A');
+    marker.appendChild(polygon);
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+
+    // Connections
+    const connections = [
+        { from: 'step-1-box', fromSide: 'right', to: 'step-2-box', toSide: 'left' },
+        { from: 'step-2-box', fromSide: 'right', to: 'step-3-box', toSide: 'left' },
+        { from: 'step-3-box', fromSide: 'bottom', to: 'step-4-box', toSide: 'top' },
+        { from: 'step-4-box', fromSide: 'bottom', to: 'step-5-box', toSide: 'top' },
+        { from: 'step-5-box', fromSide: 'bottom', to: 'step-6-box', toSide: 'top' },
+    ];
+
+    connections.forEach(conn => {
+        const fromEl = document.getElementById(conn.from);
+        const toEl = document.getElementById(conn.to);
+        const p1 = getEdgePoint(fromEl, conn.fromSide);
+        const p2 = getEdgePoint(toEl, conn.toSide);
+        drawArrow(p1, p2);
+    });
+} 
+
+function setupHeroDemoAnimation() {
+    const fields = [
+        { id: 'redact-email', original: 'john.doe@company.com', redacted: '[REDACTED-EMAIL]' },
+        { id: 'redact-phone', original: '555-123-4567', redacted: '[REDACTED-PHONE]' },
+        { id: 'redact-card', original: '****-****-****-1234', redacted: '[REDACTED-CARD]' },
+        { id: 'redact-ssn', original: '***-**-****', redacted: '[REDACTED-SSN]' }
+    ];
+
+    // Calculate max length for each field and store it
+    fields.forEach(field => {
+        field.maxLength = Math.max(field.original.length, field.redacted.length);
+    });
+
+    let isRedacted = false;
+
+    setInterval(() => {
+        isRedacted = !isRedacted;
+
+        fields.forEach(field => {
+            const element = document.getElementById(field.id);
+            if (element) {
+                element.classList.add('is-hiding');
+
+                setTimeout(() => {
+                    const textToShow = isRedacted ? field.redacted : field.original;
+                    const paddingLength = field.maxLength - textToShow.length;
+                    const padding = '\u00A0'.repeat(paddingLength);
+
+                    element.innerHTML = `<span class="highlight">${textToShow}</span><span class="padding">${padding}</span>`;
+                    
+                    element.classList.remove('is-hiding');
+                }, 300);
+            }
+        });
+    }, 2500);
+} 

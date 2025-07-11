@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synchrony Shield - Protect Your Data with Real-time Sanitization</title>
+    <title>Synchrony Shield - Secure Pattern-Based Data Protection</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -43,11 +43,8 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-
-                <h1 class="hero-title">Secure Your Data with AI-Powered Protection</h1>
-                <p class="hero-subtitle">Synchrony Shield automatically detects and redacts sensitive information in
-                    real-time, keeping your data safe without slowing you down.</p>
-
+                <h1 class="hero-title">Secure Your Data with Intelligent Pattern Detection</h1>
+                <p class="hero-subtitle">Synchrony Shield uses advanced regex pattern matching and custom phrase detection to protect sensitive information in real-time, without relying on external AI systems that could compromise your data.</p>
 
 
                 <div class="hero-cta">
@@ -76,12 +73,13 @@
                         <div class="demo-content">
                             <div class="demo-text">
                                 <p class="demo-line">Hello, my email is <span
-                                        class="redacted">john.doe@company.com</span></p>
-                                <p class="demo-line">My phone number is <span class="redacted">555-123-4567</span></p>
-                                <p class="demo-line">Credit card: <span class="redacted">****-****-****-1234</span></p>
-                                <p class="demo-line">SSN: <span class="redacted">***-**-****</span></p>
+                                        id="redact-email" class="redacted"><span class="highlight">john.doe@company.com</span><span class="padding"></span></span></p>
+                                <p class="demo-line">My phone number is <span id="redact-phone" class="redacted"><span class="highlight">555-123-4567</span><span class="padding">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p>
+                                <p class="demo-line">Credit card: <span id="redact-card" class="redacted"><span class="highlight">****-****-****-1234</span><span class="padding"></span></span></p>
+                                <p class="demo-line">SSN: <span id="redact-ssn" class="redacted"><span class="highlight">***-**-****</span><span class="padding">&nbsp;&nbsp;&nbsp;</span></span></p>
                             </div>
                             <div class="demo-status">
+                                <span class="close-icon">&times;</span>
                                 <i class="fas fa-shield-check"></i>
                                 <span>4 items redacted in real-time</span>
                             </div>
@@ -96,9 +94,66 @@
     <section id="features" class="features">
         <div class="container">
             <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">See how Synchrony Shield protects your data in real-time</p>
-            <div class="workflow-image">
-                <img src="Group 1 (1).png" alt="Synchrony Shield Workflow" class="workflow-img">
+            <p class="section-subtitle">Our browser extension uses pattern matching and DOM traversal to identify and redact sensitive data without sending information to external AI systems</p>
+            <div class="workflow-diagram three-col-layout">
+                <svg class="arrow-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></svg>
+                <div class="workflow-col">
+                    <h3 class="workflow-col-title">Step One</h3>
+                    <div class="workflow-step" id="step-1-box">
+                        <div class="step-box">
+                            <div class="step-content">
+                                <span class="step-icon"><i class="fas fa-download" aria-hidden="true"></i></span>
+                                <p>Visit the website to download the Synchrony Shield extension</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="workflow-col">
+                    <h3 class="workflow-col-title">Step Two</h3>
+                    <div class="workflow-step" id="step-2-box">
+                        <div class="step-box">
+                            <div class="step-content">
+                                <span class="step-icon"><i class="fas fa-keyboard" aria-hidden="true"></i></span>
+                                <p>Input the text into the LLM or other text field for scanning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="workflow-col">
+                    <h3 class="workflow-col-title">Step Three</h3>
+                    <div class="workflow-step" id="step-3-box">
+                        <div class="step-box">
+                            <div class="step-content">
+                                <span class="step-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
+                                <p>The extension identifies sensitive content through custom inputs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workflow-step" id="step-4-box">
+                        <div class="step-box">
+                            <div class="step-content">
+                                <span class="step-icon"><i class="fas fa-filter" aria-hidden="true"></i></span>
+                                <p>Uses regex patterns to scan input text for patterns containing PII</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workflow-step" id="step-5-box">
+                        <div class="step-box">
+                            <div class="step-content">
+                                <span class="step-icon"><i class="fas fa-code" aria-hidden="true"></i></span>
+                                <p>Utilizes Dom traversals to search HTML fields to blur and replace content</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="workflow-step" id="step-6-box">
+                        <div class="step-box">
+                            <div class="step-content">
+                                <span class="step-icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span>
+                                <p>Delivers informative HTML pop-up and filters text completely</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -107,7 +162,7 @@
     <section id="demo" class="demo">
         <div class="container">
             <h2 class="section-title">Demo</h2>
-            <p class="section-subtitle">See Synchrony Shield in action with real-time data sanitization</p>
+            <p class="section-subtitle">See Synchrony Shield in action with real-time pattern-based data protection and custom phrase filtering</p>
 
             <div class="demo-container">
 
@@ -137,10 +192,10 @@
                         <h3>Strengths</h3>
                     </div>
                     <ul>
-                        <li>Real-time redaction of sensitive data</li>
+                        <li>Advanced regex pattern matching for PII detection</li>
                         <li>Customizable rules and role-based filtering</li>
-                        <li>High transparency with redaction logs and reports</li>
-                        <li>Wors across any webpage or LLM interface</li>
+                        <li>DOM traversal for real-time field scanning</li>
+                        <li>No external AI dependencies - your data stays secure</li>
                     </ul>
                 </div>
 
@@ -162,11 +217,11 @@
                         <h3>Opportunities</h3>
                     </div>
                     <ul>
-                        <li>Add user training & education modules to mitigate risks</li>
+                        <li>Integration with employee training platforms like Workday</li>
                         <li>Expand to other platforms like Microsoft Edge or Firefox</li>
-                        <li>AI integration for smart redaction prediction</li>
-                        <li>Growing demand for data privacy solutions</li>
-                        <li>Partnership opportunities with major tech companies</li>
+                        <li>Enhanced pattern libraries for industry-specific needs</li>
+                        <li>Growing demand for non-AI data protection solutions</li>
+                        <li>Partnership opportunities with enterprise security providers</li>
                     </ul>
                 </div>
 
@@ -177,9 +232,9 @@
                     </div>
                     <ul>
                         <li>Competitors developing similar extensions</li>
-                        <li>Over-reliance on AI, leading to occasional mistakes</li>
+                        <li>Pattern-based systems may miss new attack vectors</li>
                         <li>Regulatory changes affecting data privacy requirements</li>
-                        <li>User overrides or disabling the extension may bypass protections</li>
+                        <li>User education gaps may reduce effectiveness</li>
                     </ul>
                 </div>
             </div>
@@ -195,33 +250,29 @@
                     <img src="US.JPG" alt="Synchrony Shield Team" class="about-img">
                 </div>
                 <div class="about-text">
-                    <p>Synchrony Shield was born from a critical need in today's digital landscape. As organizations
-                        increasingly rely on AI and web-based tools, the risk of accidentally exposing Personally
-                        Identifiable Information (PII) has never been higher.</p>
+                    <p>Synchrony Shield addresses a critical challenge facing organizations today. While many teams turn to LLM technology for data processing, the risk of leaking sensitive and confidential information through external AI systems has become a major concern.</p>
 
-                    <p>Our team of cybersecurity experts and AI specialists developed Synchrony Shield to provide
-                        real-time protection without compromising productivity. We believe that data security shouldn't
-                        come at the cost of user experience.</p>
+                    <p>Our team developed Synchrony Shield as a secure alternative that doesn't rely on external AI systems. Instead, we use advanced regex pattern matching, DOM traversal, and custom phrase detection to protect sensitive data locally within your browser, ensuring your confidential information never leaves your control.</p>
 
-                    <p>With Synchrony Shield, organizations can confidently use AI tools, share information, and
-                        collaborate while maintaining complete control over sensitive data visibility. Our solution
-                        adapts to your organization's unique needs and compliance requirements.</p>
+                    <p>With Synchrony Shield, organizations can confidently work with sensitive data while maintaining complete control over information security. Our solution focuses on user education and pattern-based protection, making it ideal for environments where data confidentiality is paramount.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
+    <!-- Logo Section -->
+    <section class="logo-section">
+        <div class="container">
+            <img src="synchronyshieldlogo.png" alt="Synchrony Shield Logo" class="bottom-logo">
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="synchronyshieldlogo.png" alt="Synchrony Shield Logo" class="footer-logo-img">
-                    </div>
-                    <p>Protecting sensitive data in real-time with advanced AI-powered redaction technology.</p>
+                    <p>Protecting sensitive data in real-time with advanced pattern-based redaction technology that keeps your information secure without external AI dependencies.</p>
                 </div>
 
                 <div class="footer-section">
@@ -235,7 +286,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Synchrony Shield. All rights reserved. Powered by Synchrony.</p>
+                <p>&copy; 2025 Synchrony Shield. All rights reserved. Powered by Synchrony.</p>
             </div>
         </div>
     </footer>

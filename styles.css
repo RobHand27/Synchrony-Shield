@@ -7,18 +7,18 @@
 
 :root {
     /* White and Yellow color palette */
-    --primary-yellow: #FFB700;
-    --secondary-yellow: #FFB700;
-    --accent-yellow: #FFB700;
+    --primary-yellow: #FBC601;
+    --secondary-yellow: #FBC601;
+    --accent-yellow: #FBC601;
     --light-yellow: #fffef0;
-    --dark-yellow: #FFB700;
+    --dark-yellow: #FBC601;
     --success-green: #28a745;
     --warning-orange: #ffc107;
     --danger-red: #dc3545;
     --text-dark: #333333;
     --text-light: #666666;
     --text-muted: #999999;
-    --white: #ffffff;
+    --white: #fafafa;
     --gray-100: #f8f9fa;
     --gray-200: #e9ecef;
     --gray-300: #dee2e6;
@@ -125,7 +125,7 @@ p {
 
 .btn-secondary {
     background: var(--white);
-    color: var(--primary-yellow);
+    color: var(--text-dark);
     border: 2px solid var(--primary-yellow);
 }
 
@@ -140,14 +140,12 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: var(--spacing-md) 0;
     transition: all var(--transition-normal);
 }
-
-
 
 .nav-container {
     max-width: 1200px;
@@ -236,8 +234,6 @@ p {
     min-height: 90vh;
 }
 
-
-
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
@@ -277,11 +273,13 @@ p {
 .demo-window {
     background: var(--white);
     border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 100%;
     max-width: 500px;
     border: 1px solid var(--gray-200);
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
 }
 
 .demo-header {
@@ -316,10 +314,14 @@ p {
 
 .demo-content {
     padding: var(--spacing-xl);
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-lg);
 }
 
 .demo-text {
-    margin-bottom: var(--spacing-lg);
+    flex-basis: 60%;
+    flex-shrink: 0;
 }
 
 .demo-line {
@@ -330,11 +332,23 @@ p {
 }
 
 .redacted {
-    background: var(--primary-yellow);
     color: var(--text-dark);
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out;
+    display: block;
+    margin-top: 0.25rem;
+    width: fit-content;
+    white-space: pre;
+}
+
+.redacted .highlight {
+    background: var(--primary-yellow);
     padding: 2px 4px;
     border-radius: 3px;
-    font-weight: bold;
+}
+
+.redacted.is-hiding {
+    opacity: 0;
 }
 
 .demo-status {
@@ -342,11 +356,24 @@ p {
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-md);
-    background: rgba(40, 167, 69, 0.1);
+    background: rgba(220, 53, 69, 0.1);
     border-radius: var(--border-radius-md);
-    color: #28a745;
+    color: var(--danger-red);
     font-size: 0.9rem;
     font-weight: 500;
+    min-width: 180px;
+    justify-content: center;
+    position: relative;
+}
+
+.close-icon {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 1.2rem;
+    color: var(--danger-red);
+    cursor: pointer;
+    line-height: 1;
 }
 
 @keyframes pulse {
@@ -520,25 +547,151 @@ p {
     padding: var(--spacing-3xl) 0;
 }
 
-.workflow-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: var(--spacing-2xl);
-    min-height: 80vh;
+#features .section-title {
+    font-size: 3rem;
+}
+
+#features .section-subtitle {
+    max-width: 800px;
+}
+
+.workflow-diagram {
+    position: relative;
     width: 100%;
+    max-width: 1400px;
+    margin: var(--spacing-2xl) auto;
+    padding: var(--spacing-2xl);
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
-.workflow-img {
-    max-width: 90%;
-    max-height: 80vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: var(--border-radius-lg);
+.workflow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
 }
 
+.workflow-col-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
+.workflow-step {
+    width: 100%;
+    min-height: 90px;
+    margin: 0;
+}
+
+.step-box {
+    background: #FFFAF0;
+    border: 2.5px solid #F5D78A;
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.step-box:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--dark-yellow);
+}
+
+.step-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.step-icon {
+    display: flex;
+    align-items: center;
+    font-size: 2.1rem;
+    margin-right: 1rem;
+    color: #F5D78A;
+    flex-shrink: 0;
+}
+
+.step-content p {
+    text-align: left;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000000;
+    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+.workflow-arrow {
+    display: none; /* Hide arrows for now */
+}
+
+.workflow-diagram.column-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 420px;
+    margin: var(--spacing-2xl) auto;
+    padding: var(--spacing-2xl) 0;
+    background: var(--white);
+}
+
+.step-label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #bfa100;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Remove absolute positioning */
+.step-1, .step-2, .step-3, .step-4, .step-5, .step-6 {
+    position: static;
+    top: auto;
+    left: auto;
+}
+
+.arrow-1, .arrow-2, .arrow-3, .arrow-4, .arrow-5 {
+    display: none;
+}
+
+.step-multiline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-left: 0.2rem;
+}
+.step-multiline div {
+    font-size: 1.01rem;
+    font-weight: 500;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.step-multiline i {
+    font-size: 1.2rem;
+    color: #F5D78A;
+    margin-right: 0.3rem;
+}
 
 /* SWOT Analysis Section */
 .swot {
@@ -672,7 +825,16 @@ p {
     margin-bottom: var(--spacing-lg);
 }
 
+.logo-section {
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+    background: var(--white);
+}
 
+.bottom-logo {
+    height: 15rem;
+    max-width: 100%;
+}
 
 /* Footer */
 .footer {
@@ -841,6 +1003,36 @@ p {
     
     .swot-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .workflow-diagram {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--spacing-lg);
+        grid-gap: var(--spacing-md);
+    }
+    
+    .step-1, .step-2, .step-3, .step-4, .step-5, .step-6 {
+        grid-column: unset !important;
+        grid-row: unset !important;
+    }
+    
+    .arrow-1, .arrow-2, .arrow-3, .arrow-4, .arrow-5 {
+        grid-column: unset !important;
+        grid-row: unset !important;
+    }
+    
+    .workflow-arrow svg {
+        transform: rotate(90deg);
+    }
+    
+    .arrow-1 svg {
+        transform: rotate(0deg);
+    }
+    
+    .step-box {
+        max-width: 280px;
     }
 }
 

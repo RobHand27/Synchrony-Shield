@@ -1,6 +1,6 @@
-# Smart Sanitizer Website
+# Synchrony Shield Website
 
-A modern, responsive website for Smart Sanitizer - a Chrome extension that protects sensitive data with real-time sanitization.
+A modern, responsive website for Synchrony Shield - a Chrome extension that protects sensitive data with real-time pattern-based detection, without relying on external AI systems.
 
 ## 🚀 Features
 
@@ -17,8 +17,8 @@ A modern, responsive website for Smart Sanitizer - a Chrome extension that prote
 
 ### Interactive Features
 
-- **Real-time PII Detection**: Live demonstration of data sanitization
-- **Customizable Redaction**: Choose which data types to mask
+- **Real-time PII Detection**: Live demonstration of pattern-based data protection
+- **Customizable Redaction**: Choose which data types to mask using regex patterns and custom phrases
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile
 - **Smooth Animations**: Professional transitions and hover effects
 - **Modal Dialogs**: Contact forms and download options
@@ -36,9 +36,9 @@ A modern, responsive website for Smart Sanitizer - a Chrome extension that prote
 
 ### Color Scheme
 
-- **Primary Yellow**: #ffd700 (Bright Gold)
-- **Secondary Yellow**: #ffed4e (Light Gold)
-- **Accent Yellow**: #fff200 (Bright Yellow)
+- **Primary Yellow**: #FFB700 (Brand Orange)
+- **Secondary Yellow**: #FFB700 (Brand Orange)
+- **Accent Yellow**: #FFB700 (Brand Orange)
 - **Success Green**: #28a745
 - **Warning Orange**: #ffc107
 - **Danger Red**: #dc3545
@@ -222,4 +222,4 @@ For questions or support, please contact the development team.
 
 ---
 
-**Smart Sanitizer** - Protecting sensitive data in real-time with advanced AI-powered redaction technology.
+**Synchrony Shield** - Protecting sensitive data in real-time with advanced pattern-based redaction technology that doesn't rely on external AI systems.
