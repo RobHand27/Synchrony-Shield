@@ -1,3 +1,10 @@
+## Runner-Up in Synchrony Corporate AI Hackathon
+
+## Authors
+
+- [Rob Hand](https://github.com/RobHand27)
+- [Devin Patel](https://github.com/DevinPatel123)
+
 # Synchrony Shield Website
 
 A modern, responsive website for Synchrony Shield - a Chrome extension that protects sensitive data with real-time pattern-based detection, without relying on external AI systems.
