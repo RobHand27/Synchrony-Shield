@@ -3,8 +3,6 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeWebsite();
-    drawWorkflowArrows();
-    window.addEventListener('resize', drawWorkflowArrows);
 });
 
 // Initialize all website functionality
@@ -507,83 +505,7 @@ window.scrollToDemo = scrollToDemo;
 window.showContactModal = showContactModal;
 window.downloadExtension = downloadExtension; 
 
-function drawWorkflowArrows() {
-    const svg = document.querySelector('.workflow-diagram .arrow-svg');
-    const diagram = document.querySelector('.workflow-diagram');
-    if (!svg || !diagram) return;
-
-    // Clear existing arrows
-    svg.innerHTML = '';
-
-    const diagramRect = diagram.getBoundingClientRect();
-
-    function getEdgePoint(element, side) {
-        if (!element) return null;
-        const rect = element.getBoundingClientRect();
-        const x = rect.left - diagramRect.left;
-        const y = rect.top - diagramRect.top;
-
-        switch (side) {
-            case 'left':
-                return { x: x, y: y + rect.height / 2 };
-            case 'right':
-                return { x: x + rect.width, y: y + rect.height / 2 };
-            case 'top':
-                return { x: x + rect.width / 2, y: y };
-            case 'bottom':
-                return { x: x + rect.width / 2, y: y + rect.height };
-            default:
-                return null;
-        }
-    }
-
-    function drawArrow(p1, p2) {
-        if (!p1 || !p2) return;
-
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', p1.x);
-        line.setAttribute('y1', p1.y);
-        line.setAttribute('x2', p2.x);
-        line.setAttribute('y2', p2.y);
-        line.setAttribute('stroke', '#F5D78A');
-        line.setAttribute('stroke-width', '3');
-        line.setAttribute('marker-end', 'url(#arrowhead)');
-        svg.appendChild(line);
-    }
-
-    // Define arrowhead marker
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
-    marker.setAttribute('id', 'arrowhead');
-    marker.setAttribute('markerWidth', '10');
-    marker.setAttribute('markerHeight', '7');
-    marker.setAttribute('refX', '8');
-    marker.setAttribute('refY', '3.5');
-    marker.setAttribute('orient', 'auto');
-    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-    polygon.setAttribute('points', '0 0, 10 3.5, 0 7');
-    polygon.setAttribute('fill', '#F5D78A');
-    marker.appendChild(polygon);
-    defs.appendChild(marker);
-    svg.appendChild(defs);
-
-    // Connections
-    const connections = [
-        { from: 'step-1-box', fromSide: 'right', to: 'step-2-box', toSide: 'left' },
-        { from: 'step-2-box', fromSide: 'right', to: 'step-3-box', toSide: 'left' },
-        { from: 'step-3-box', fromSide: 'bottom', to: 'step-4-box', toSide: 'top' },
-        { from: 'step-4-box', fromSide: 'bottom', to: 'step-5-box', toSide: 'top' },
-        { from: 'step-5-box', fromSide: 'bottom', to: 'step-6-box', toSide: 'top' },
-    ];
-
-    connections.forEach(conn => {
-        const fromEl = document.getElementById(conn.from);
-        const toEl = document.getElementById(conn.to);
-        const p1 = getEdgePoint(fromEl, conn.fromSide);
-        const p2 = getEdgePoint(toEl, conn.toSide);
-        drawArrow(p1, p2);
-    });
-} 
+ 
 
 function setupHeroDemoAnimation() {
     const fields = [
