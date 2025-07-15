@@ -11,7 +11,7 @@
 
 A modern, responsive website for Synchrony Shield - a Chrome extension that protects sensitive data with real-time pattern-based detection, without relying on external AI systems.
 
-## 🚀 Features
+##  Features
 
 ### Core Website Sections
 
@@ -41,7 +41,7 @@ A modern, responsive website for Synchrony Shield - a Chrome extension that prot
 - **Accessibility**: Proper focus states and semantic HTML
 - **Cross-browser Compatible**: Works on all modern browsers
 
-## 🎨 Design
+##  Design
 
 ### Color Scheme
 
@@ -57,7 +57,7 @@ A modern, responsive website for Synchrony Shield - a Chrome extension that prot
 - **Font Family**: Inter (Google Fonts)
 - **Clean, Modern Design**: Professional appearance aligned with enterprise software
 
-## 📱 Responsive Design
+##  Responsive Design
 
 The website is fully responsive with breakpoints at:
 
@@ -65,7 +65,7 @@ The website is fully responsive with breakpoints at:
 - **Tablet**: 768px - 1199px
 - **Mobile**: Below 768px
 
-## 🛠️ Interactive Demo
+##  Interactive Demo
 
 The demo section includes real-time PII detection for:
 
@@ -83,7 +83,7 @@ The demo section includes real-time PII detection for:
 3. Watch the real-time sanitization in the output field
 4. Visual feedback shows when redaction occurs
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -117,7 +117,7 @@ hackathonwebsite/
 └── README.md           # This documentation
 ```
 
-## 🎯 Key Features Explained
+##  Key Features Explained
 
 ### 1. Hero Section
 
@@ -154,7 +154,7 @@ hackathonwebsite/
 - Hover animations
 - Professional styling
 
-## 🔧 Customization
+##  Customization
 
 ### Colors
 
@@ -191,7 +191,7 @@ const piiPatterns = {
 };
 ```
 
-## 📊 Performance
+##  Performance
 
 ### Optimizations
 
@@ -206,18 +206,18 @@ const piiPatterns = {
 - **Fast initial load**: Optimized CSS and minimal JS
 - **Smooth animations**: 60fps transitions
 
-## 🌐 Browser Support
+##  Browser Support
 
 - **Chrome**: 60+
 - **Firefox**: 55+
 - **Safari**: 12+
 - **Edge**: 79+
 
-## 📝 License
+##  License
 
 This project is created for demonstration purposes. Feel free to modify and use for your own projects.
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the project
 2. Create a feature branch
@@ -225,7 +225,7 @@ This project is created for demonstration purposes. Feel free to modify and use 
 4. Test thoroughly
 5. Submit a pull request
 
-## 📞 Support
+##  Support
 
 For questions or support, please contact the development team.
 
