@@ -5,6 +5,7 @@
 - [Rob Hand](https://github.com/RobHand27)
 - [Devin Patel](https://github.com/DevinPatel123)
 - [Kush Patel](https://github.com/kush1314)
+- [Piotr Zatek](https://github.com/pazatek)
 
 
 # Synchrony Shield Website
